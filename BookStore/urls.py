@@ -17,7 +17,8 @@ from ast import pattern
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
-
+from django.conf.urls.static import static
+from django.conf import settings
 urlpatterns = [
     # Below path for using custom made Admin Panel
     path('adminlog/', auth_views.LoginView.as_view(template_name='Admin/ADlogin.html'), name='adminlog'),
@@ -25,4 +26,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('register.urls')),
     path('',include('cart.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
