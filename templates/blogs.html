@@ -1,0 +1,121 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/blog_css/blog.css' %}">
+
+</head>
+
+<body>
+   
+    <section class="heading">
+        <h3>Blogs</h3>
+        <p> <a href="home.html">Home</a> / <span>Blogs</span> </p>
+    </section>
+
+    <!-- login form  -->
+
+    <div class="account">
+
+        <form action="">
+            <h3>Name: </h3>
+            <h3>Email: </h3>
+            <a href="#" class="btn">Edit Your Profile</a>
+            <a href="#" class="btn2">Log Out</a>
+
+
+        </form>
+
+    </div>
+
+
+    <!-- blog section starts  -->
+
+    <section class="blogs">
+
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                    <img src="{% static 'assets/blog/calibre_cover.jpg' %}" alt="">
+                </div>
+                <div class="content">
+                    <div class="icons">
+                        <a href="#"> <i class="fas fa-calendar"></i> 28th May, 2022 </a>
+                        <a href="#"> <i class="fas fa-user"></i> By Admin </a>
+                    </div>
+                    <h3>Warrior Rising</h3>
+                    <p>I am rather partial to memoirs centred around food and I read two excellent ones last month, one of which was Taste: My Life Through Food by Stanley Tucci. </p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="{% static 'assets/blog/OIP (1).jfif' %}" alt="">
+                </div>
+                <div class="content">
+                    <div class="icons">
+                        <a href="#"> <i class="fas fa-calendar"></i> 28th May, 2022 </a>
+                        <a href="#"> <i class="fas fa-user"></i> By Admin </a>
+                    </div>
+                    <h3>Darkness</h3>
+                    <p>I am rather partial to memoirs centred around food and I read two excellent ones last month, one of which was Taste: My Life Through Food by Stanley Tucci. </p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="{% static 'assets/blog/R (1).jfif' %}" alt="">
+                </div>
+                <div class="content">
+                    <div class="icons">
+                        <a href="#"> <i class="fas fa-calendar"></i> 28th May, 2022 </a>
+                        <a href="#"> <i class="fas fa-user"></i> By Admin </a>
+                    </div>
+                    <h3>His Beloved</h3>
+                    <p>I am rather partial to memoirs centred around food and I read two excellent ones last month, one of which was Taste: My Life Through Food by Stanley Tucci. </p>
+                </div>
+            </div>
+
+            <div class="box">
+                <div class="image">
+                    <img src="{% static 'assets/blog/R (2).jfif' %}" alt="">
+                </div>
+                <div class="content">
+                    <div class="icons">
+                        <a href="#"> <i class="fas fa-calendar"></i> 28th May, 2022 </a>
+                        <a href="#"> <i class="fas fa-user"></i> By Admin </a>
+                    </div>
+                    <h3>Love Story</h3>
+                    <p>I am rather partial to memoirs centred around food and I read two excellent ones last month, one of which was Taste: My Life Through Food by Stanley Tucci. </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- blog section ends  -->
+
+
+
+   
+
+    <!-- custom js file link  -->
+    <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+{% endblock %}
+</html>

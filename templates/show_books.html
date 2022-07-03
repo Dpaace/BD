@@ -1,0 +1,69 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+
+</head>
+
+<body>
+
+
+    
+
+
+
+    <!-- cart section starts-->
+
+    <section class="products">
+        <div class="box-container">
+            {% for item in order3 %}
+            <div class="box">
+                <!-- <button class="fas fa-times"   href="/remove_order/{{item.product_id}}"
+                    onclick="return confirm('delete this item?')"></button> -->
+                    <img src="{% static 'assets/' %}{{item.product.b_pic}}" alt="">
+                <div class="name">{{item.product.b_name}}</div>
+            
+                    <div class="name">{{item.quantity}}</div>
+                
+                
+
+            
+                <div class="sub-total">Sub Total : <span>Nrs{{item.get_total}}</span></div>
+                <!-- to remove product from cart -->
+
+        
+            </div>
+            {% endfor %}
+
+        </div>
+
+        
+
+    </section>
+
+
+    <!-- cart section ends -->
+
+    <!-- footer section  -->
+
+   
+    <!-- custom js file link  -->
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+
+</html>
+{% endblock %}

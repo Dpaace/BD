@@ -1,0 +1,79 @@
+{% extends 'User/user_nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Profile</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/user_css/style.css' %}">
+
+</head>
+
+<body>
+    <!-- setting section starts  -->
+
+    <section class="settings" id="settings">
+
+        <h1 class="heading"> <span>Update Your</span> Profile </h1>
+
+        <div class="row">
+            <form action="" method="POST"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <h3>Change Your Information</h3>
+                    <p>Username</p>
+                    <div class="inputBox">
+                        <input type="text" value="{{user.first_name}} {{user.last_name}}" >
+                        <input type="hidden" value="{{user.id}}" name="id">
+                    </div>
+                    <p>Phone Number</p>
+                    <div class="inputBox"> 
+                        <input type="text" placeholder="Phone number" value="{{details.phone_num}}" name="phone_num">
+                    </div>
+                    
+                    <p>Nationality</p>
+                    <div class="inputBox ">
+                        <input type="text" placeholder="Nationality" value="{{details.nationality}}" name="nationality">
+                    </div>
+
+                    <p>Address</p>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Address" value="{{details.address}}" name="address">
+                    </div>
+
+                    <p>Language</p>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Language" value="{{details.language}}" name="language">
+                    </div>
+
+                    <p>Occupation</p>
+                    <div class="inputBox">
+                        <input type="text" placeholder="Occupation" value="{{details.occupation}}" name="occupation">
+                    </div>
+
+                    <p>Profile picture</p>
+                    <div>
+                        <input type="file"  name="customer_picture" value="{{details.customer_picture}}" >
+                    </div>
+                    
+                <!-- <a href="/about" class="btn"> Update<i class="fas fa-edit"></i> </a> -->
+                <button class="btn" value="submit" type="submit"> Submit <i class="fas fa-edit"></i> </button>
+            </form>
+        </div>
+
+    </section>
+
+    <!-- settings section ends -->
+
+</body>
+
+</html>
+{% endblock content %}

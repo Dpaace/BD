@@ -1,0 +1,54 @@
+{% extends 'User/user_nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/user_css/front.css' %}" >
+
+</head>
+<body>
+    
+
+
+<!-- home section starts  -->
+
+<section class="home">
+
+    <div class="card">
+		<div class="circle" style="--clr:#02953a">
+            <img src="{% static 'assets/' %}{{details.customer_picture}}"  class="logo">
+		</div>
+		<div class="content">
+			<h2>{{user.username}}</h2>
+			<p> {{user.first_name}} {{user.last_name}}</p>
+            <p>{{user.email}}</p>
+            
+
+            {% if details.id == c_id %}
+            <a href="/addDetails/{{user.id}}" class="btn"> Add info <i class="fas fa-info"></i> </a>
+            {%else%}
+            <a href="/updateProf/{{user.id}}" class="btn"> update info <i class="fas fa-info"></i> </a>
+            {% endif %}
+
+			<!-- <a href="about.html" class="btn">More Details</a> -->
+		</div>
+        <img src="{% static 'assets/' %}{{details.customer_picture}}"class="product_img" >
+	</div>
+
+</section>
+
+<!-- home section ends -->
+
+</body>
+</html>
+{% endblock content %}

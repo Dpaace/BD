@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bookmandu | Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin_final/admin_dash.css' %}" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+
+        <div class="logo_name">BookMandu</div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <a href="/adminpage" class="active">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+          <span class="tooltip">Dashboard</span>
+        </li>
+        <li>
+          <a href="/admindash" >
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Books</span>
+          </a>
+          <span class="tooltip">Books</span>
+        </li>
+        <li>
+          <a href="/customers">
+            <i class="bx bx-user"></i>
+            <span class="links_name">Customers</span>
+          </a>
+          <span class="tooltip">Customers</span>
+        </li>
+        <li>
+          <a href="user_order">
+            <i class="bx bx-cart-alt"></i>
+            <span class="links_name">Order</span>
+          </a>
+          <span class="tooltip">Order</span>
+        </li>
+        <li>
+          <a href="/message">
+            <i class="bx bx-chat"></i>
+            <span class="links_name">Messages</span>
+          </a>
+          <span class="tooltip">Messages</span>
+        </li>
+        <li>
+          <a href="/addbook">
+            <i class="bx bx-cart"></i>
+            <span class="links_name">Add Book</span>
+          </a>
+          <span class="tooltip">Add Books</span>
+        </li>
+
+        <li class="profile">
+          <div class="profile-details">
+            <div class="name_job">
+              <div class="name">Admin</div>
+              <div class="job">Logout</div>
+            </div>
+          </div>
+         <a href="/logout"> <i class="bx bx-log-out" id="log_out"></i></a>
+        </li>
+      </ul>
+    </div>
+    {% block content %}
+
+    {% endblock %}
+    </body>
+    </html>
+    <script src="{% static 'js/admin/script.js' %}"></script>

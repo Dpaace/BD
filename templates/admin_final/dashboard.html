@@ -1,0 +1,81 @@
+{% extends 'admin_final/adminNav.html' %}
+{% load static %}
+  {% block content %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bookmandu | Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin_final/admin_dash.css' %}" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+  
+
+    <div class="container">
+      
+			<div class="card">
+				<div class="percent" style="--clr:#04fc43;--num:85;">
+					<div class="dot"></div>
+					<svg>
+						<circle cx="70" cy="70" r="70"></circle>
+						<circle cx="70" cy="70" r="70"></circle>
+					</svg>
+					<div class="number">
+						<h2>{{customer}}</h2>
+						<p>Customers</p>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="percent" style="--clr:#fee800;--num:72;">
+					<div class="dot"></div>
+					<svg>
+						<circle cx="70" cy="70" r="70"></circle>
+						<circle cx="70" cy="70" r="70"></circle>
+					</svg>
+					<div class="number">
+						<h2>{{books}}</h2>
+						<p>Books</p>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="percent" style="--clr:#ff000d;--num:12;">
+					<div class="dot"></div>
+					<svg>
+						<circle cx="70" cy="70" r="70"></circle>
+						<circle cx="70" cy="70" r="70"></circle>
+					</svg>
+					<div class="number">
+						<h2>{{order}}</h2>
+						<p>Orders</p>
+					</div>
+				</div>
+			</div>
+			<div class="card">
+				<div class="percent" style="--clr:#06ccff;--num:10;">
+					<div class="dot"></div>
+					<svg>
+						<circle cx="70" cy="70" r="70"></circle>
+						<circle cx="70" cy="70" r="70"></circle>
+					</svg>
+					<div class="number">
+						<h2>{{msg}}</h2>
+						<p>Messages</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+{% endblock %}

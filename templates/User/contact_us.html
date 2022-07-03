@@ -1,0 +1,115 @@
+{% extends 'nav.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact US</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="/static/css/contact_us.css">
+
+</head>
+
+<body>
+ 
+
+
+    <!-- contact section starts  -->
+    <section class="contact" id="contact">
+
+
+
+        <div class="icons-container">
+
+            <div class="icons">
+                <img src="/static/assets/img/icon-1.png" alt="">
+                <h1>Shop Opening Hours</h1>
+                <h2>Sunday-Thursday:</h2>
+                <h3>7:00AM to 10:30AM</h3>
+                <h2>Friday-Saturday:</h2>
+                <h3>10:00AM to 01:00AM</h3>
+            </div>
+
+            <div class="icons">
+                <img src="/static/assets/img/icon-2.png" alt="">
+                <h1>Contact Numbers</h1>
+                <h3>+977 9860914588</h3>
+                <h3>+01-4222356</h3>
+            </div>
+
+            <div class="icons">
+                <img src="/static/assets/img/icon-3.png" alt="">
+                <h1>Location</h1>
+                <h3>Dillibazar, Kathmandu</h3>
+                <h3>Bagbazar, Kathmandu</h3>
+
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h3>Contact US</h3>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <input type="text" placeholder="Your Name" name="c_id" value="{{user.id}}" id="" required  hidden>
+                        <span>Name</span>
+                        <input type="text" placeholder="Your Name" name="c_name" id="" required>
+                    </div>
+                    <div class="inputBox">
+                        <span>Phone Number</span>
+                        <input type="number" placeholder="Your Number" name="c_phone" id="" required>
+                    </div>
+                </div>
+
+                <div class="flex">
+                    <div class="inputBox">
+                        <span>Address</span>
+                        <input type="text" placeholder="Your Address" name="c_adrs" id="">
+                    </div>
+                    <div class="inputBox">
+                        <span>Email Address</span>
+                        <input type="email" placeholder="Your Email Address" name="c_email" id="">
+                    </div>
+                </div>
+                <div class="flex">
+                    <div class="inputBox">
+                        <textarea placeholder="More Message/Details" name="C_msg" id="" cols="30" rows="10"></textarea>
+                    </div>
+                    <div class="inputBox">
+                        <iframe class="map"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.3608383752385!2d85.32779051601771!3d27.70614313214978!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190a74aa1f23%3A0x74ebef82ad0e5c15!2sSoftwarica%20College%20of%20IT%20%26%20E-Commerce!5e0!3m2!1sen!2snp!4v1653564088328!5m2!1sen!2snp"
+                            allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <input class="btn" type="submit" value="send message" >
+                
+            </form>
+        </div>
+
+
+
+    </section>
+    <!-- contact section ends  -->
+
+
+
+    
+
+    <!-- custom js file link  -->
+    <script src="/static/js/home.js"></script>
+
+</body>
+
+</html>
+{% endblock %}

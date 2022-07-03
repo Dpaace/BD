@@ -1,0 +1,95 @@
+{% extends 'nav.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Book</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/home_css/viewbook.css' %}">
+
+</head>
+
+<body>
+ 
+    <section class="heading">
+        <h3>Book Details</h3>
+        <p> <a href="/dash">Home</a> / <span>Book Details</span> </p>
+    </section>
+
+    
+
+    
+    <!-- book section starts  -->
+    <section class="book" id="book">
+        <div class="row-1">
+            <div class="image">
+                <img src="/static/assets/{{books.b_pic}}" alt="">
+            </div>
+        
+            <div class="content">
+                {% if is_favourite %}
+                <a href="/favourite_list">
+                    <!-- <i class="fas fa-heart fa-lg" id="fav" class="btn">Remove</i> -->
+                    <a href="/favourite/{{books.book_id}}" id="fav"class="btn">Remove
+                        <i class="fas fa-heart fa-lg"></i>
+                </a>
+                {% else %}
+                <a href="/favourite/{{books.book_id}}" id="fav"class="btn">Add
+                    <i class="far fa-heart fa-lg"></i>
+                </a>
+                {% endif %}
+
+
+                <h3>{{books.b_name}}:</h3>
+                {% if books.quantity != 0%}
+                <p><span>Available</span></p>
+                {% else %}
+                <!-- or -->
+                <span2>Out of Stock</span2>
+                {% endif %}
+                <h4>Details:</h4>
+
+                <div class="box-container">
+                    <div class="box">
+                        <p> <span> Author: </span> {{books.auther}} </p>
+                        <p> <span> Book Condition: </span> Second Hand </p>
+                        <p> <span> Book Genre: </span> {{books.b_genre}}</p>
+
+                    </div>
+                    <div class="box">
+                        <p> <span> Book Price: </span> {{books.b_price}} </p>
+                        <p> <span> Available Pieces: </span> {{books.quantity}} </p>
+
+                    </div>
+                    <P>{{books.b_desc}}</P>
+                    {% if books.quantity != 0 %}
+                    <a data-product="{{books.book_id}}" data-action="add" 
+                    class="btn update-cart"> Add to cart <i class="fas fa-shopping-basket"></i> </a>
+                    {%else%}
+                    <a href="#" class="btn"> Out of Stock <i class="fas fa-shopping-basket"></i> </a>
+                    {% endif %}
+                </div> 
+
+            </div>
+        
+        </div>
+        
+    </section>
+    <!-- book section ends  -->
+
+    <!-- custom js file link  -->
+    <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

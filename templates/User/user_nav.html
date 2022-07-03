@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/user_css/front.css' %}" >
+
+</head>
+<body>
+    
+<!-- navbar section starts  -->
+
+<nav class="navbar">
+    <a href="/profile"> <i class="fas fa-home"></i> <span>Profile</span> </a>
+    <a href="/about/"> <i class="fas fa-user"></i> <span>About</span> </a>
+    <a href="/mybook"> <i class="fas fa-briefcase"></i> <span>My Books</span> </a>
+    <a href="/profile_setting"> <i class="fas fa-cog"></i> <span>Settings</span> </a>
+    <a href="/dash"> <i class="fas fa-home"></i> <span>Back To Home</span> </a>
+
+
+</nav>
+
+
+<!-- navbar section ends -->
+</body>
+{% block content %}{% endblock content %}
+</html>

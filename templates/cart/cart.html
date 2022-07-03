@@ -1,0 +1,86 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+
+</head>
+
+<body>
+  
+
+    
+    <section class="heading">
+        <h3>Cart</h3>
+        <p> <a href="/dash">Home</a> / <span>Cart</span> </p>
+    </section>
+
+    <!-- message show -->
+    {% for msg in messages %}
+
+    <strong>Hey!</strong> {{msg}}
+    
+    {% endfor %} 
+    <!-- cart section starts-->
+
+    <section class="products">
+        <div class="cart-total">
+            <p>Grand Total : <span>Nrs.{{order.get_cart_total}}</span></p>
+            <p>Total Item : <span>{{order.get_cart_items}}</span></p>
+            <a href="/checkout" class="btn">Checkout Orders <i class="fas fa-shopping-cart"></i></a>
+        </div>
+        </div>
+
+        <div class="box-container">
+            {% for item in items %}
+            <div class="box">
+                <!-- <button class="fas fa-times"   href="/remove_order/{{item.product_id}}"
+                    onclick="return confirm('delete this item?')"></button> -->
+                    <img src="{% static 'assets/' %}{{item.product.b_pic}}" alt="">
+                <div class="name">{{item.product.b_name}}</div>
+                <div class="flex">
+                    <div class="price"><span>Nrs.{{item.product.b_price}} </span></div>
+                    <input type="number" name="qty" class="qty" min="1" max="99" value="{{item.quantity}}"
+                        onkeypress="if(this.value.length == 2) return false;">
+                    <!-- <button type="submit" class="fas fa-edit">  -->
+                 </button>
+                 
+                 <div data-product="{{item.product.book_id}}" data-action="add" class="btn update-cart">&#8593</div>
+                        <div data-product="{{item.product.book_id}}" data-action="remove" class="btn update-cart">&#8595</div>
+                </div>
+                <div class="sub-total">Sub Total : <span>Nrs{{item.get_total}}</span></div>
+                <!-- to remove product from cart -->
+                <a href="/remove_order/{{item.product_id}}"  onclick="return confirm('delete all from cart?');"><i class="fas fa-times"></i></a>
+        
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="more-btn" data-product="{{order.id}}"  data-action="delete"  class="btn update-cart">
+            <a href="/delete_order/{{order.id}}" class="btn" onclick="return confirm('delete all from cart?');">Delete All<i class="fas fa-trash-alt"></i></a>
+        </div>
+
+    </section>
+
+
+    <!-- cart section ends -->   
+    <!-- custom js file link  -->
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</body>
+
+</html>
+{% endblock %}

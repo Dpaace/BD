@@ -1,0 +1,105 @@
+{% extends 'admin_final/adminNav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Bookmandu | Admin Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/admin_final/orders.css' %}"/>
+
+  <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <script type="text/javascript">
+
+
+    function getToken(name) {
+      var cookieValue = null;
+      if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+          var cookie = cookies[i].trim();
+          //Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+            break;
+          }
+        }
+
+      }
+      return cookieValue;
+    }
+    var csrftoken = getToken('csrftoken');
+
+  </script>
+</head>
+
+<body>
+
+  <section class="home-section">
+    <div class="text">Customer's Orders</div>
+    <div class="home-content">
+      <div class="sales-boxes">
+        <div class="recent-sales box">
+          <div class="title">Customers Orders</div>
+          <div class="sales-details">
+            <table>
+              <thead>
+                <th>User id:</th>
+                <th>Placed on:</th>
+                <th>Customer's Name</th>
+                <th>Number</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Products</th>
+                <th>Total Price</th>
+                <th>Payment Method</th>
+                <th>Action</th>
+              </thead>
+
+              <tbody>
+                {% for order in orders %}
+                <tr>
+                  <td> {{order.id}} </td>
+                  <td> {{order.date_added}}</td>
+                  <td>{{order.customer.first_name}}</td>
+                  <td>{{order.phone}}</td>
+                  <td> {{order.customer.email}}</td>
+                  <td> {{order.address}}</td>
+                  <td>{{order.purchased_books}}</td>
+                  <td>Nrs.{{order.total_price}}</td>>
+                  <td>Online</td>
+                  <td>
+                    <form action="" method="">
+                      {{order.order.id}}
+                      {% if order.status %}
+                      <a href="#" onclick="return confirm('order is delivered');" class="delete-btn">completed</a>
+
+                      {%else%}
+
+                      <div data-product="{{order.id}}" data-action="update" value="update"
+                        onclick="return confirm('order complete?');" name="update_order" class="option-btn">pending
+                      </div>
+                      {% endif %}
+                    </form>
+
+          </div>
+          {% endfor %}</td>
+          
+          </tr>
+          </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+{% endblock %}

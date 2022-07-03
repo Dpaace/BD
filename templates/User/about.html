@@ -1,0 +1,68 @@
+{% extends 'User/user_nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{%load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/user_css/style.css' %}">
+
+</head>
+
+<body>
+
+
+  
+    <!-- about section starts  -->
+
+    <section class="about">
+
+        <h1 class="heading"> about <span>me</span> </h1>
+
+        <div class="row">
+
+            <div class="info-container">
+
+                <h1>personal info</h1>
+
+                <div class="box-container">
+                    <!-- <img src="{% static 'assets/' %}{{details.customer_picture}}"  class="logo"> -->
+                    <div class="box">
+                        <h3> <span>Name : </span> {{request.user.first_name}} {{request.user.last_name}}</h3>
+                        <h3> <span>Phone Number : </span> {{details.phone_num}} </h3>
+                        <h3> <span>Email : </span> {{request.user.email}}</h3>
+                        <h3> <span>Occupation : </span> {{details.occupation}} </h3>
+                    </div>
+
+                    <div class="box">
+                        <h3> <span>Nationality : </span> {{details.nationality}} </h3>
+                        <h3> <span>Address : </span> {{details.address}} </h3>
+                        <h3> <span>Language : </span> {{details.language}}</h3>
+                    </div>
+
+
+
+                </div>
+                <a href="/updateProf/{{user.id}}" class="btn"> Update <i class="fas fa-edit"></i> </a>
+
+
+            </div>
+
+
+        </div>
+
+    </section>
+{% endblock content %}
+
+
+</body>
+
+</html>

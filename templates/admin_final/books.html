@@ -1,0 +1,74 @@
+{% extends 'admin_final/adminNav.html' %}
+{% load static %}
+  {% block content %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Bookmandu | Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin_final/book.css' %}" />
+
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+ 
+    <section class="home-section">
+        <div class="text">Books List</div>
+        <div class="home-content">
+            <div class="sales-boxes">
+                <div class="recent-sales box">
+                    <div class="title">Bookmandu's Books List</div>
+                    <div class="sales-details">
+                        <table>
+                            <thead>
+                                <th>Book ID</th>
+                                <th>Book image</th>
+                                <th>Book name</th>
+                                <th>Book Price</th>
+                                <th>Genre</th>
+                                <th>Author</th>
+                                <th>Quantity</th>
+                                <th>Update</th>
+                                <th>Delete</th>
+                                <th>Status</th>
+                            </thead>
+
+                            <tbody>
+                                {% for addbook in dash %}
+                                <tr>
+                                    <th scope="row">{{addbook.book_id}}</th>
+                           
+                                    <td><img height="100" width="100" src="{% static 'assets/' %}{{addbook.b_pic}}" alt=""></td>
+                                    
+                                    <td>{{addbook.b_name}}</td>
+                                    <td>{{addbook.b_price}}</td>
+                                    <td>{{addbook.b_genre}}</td>
+                                    <td>{{addbook.auther}}</td>
+                                    <td>{{addbook.quantity}}</td>
+                                    <td> <a href="/edit/{{addbook.book_id}}" class="btn btn-primary">Edit</a></td>
+                                    <td> <a href="/delete/{{addbook.book_id}}" class="btn btn-danger">Delete</a></td>
+                                    {% if addbook.quantity >= 1 %}
+                                    <td><small class="badge">in-stock</small></td>
+                                    {%else%}
+                                    <td><small class="badge">out-of-stock</small></td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+{% endblock %}

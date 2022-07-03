@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/home_css/home.css' %}">
+
+    <script type="text/javascript">
+        var user = '{{request.user}}'
+
+        function getToken(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    //Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+
+            }
+            return cookieValue;
+        }
+        var csrftoken = getToken('csrftoken');
+
+    </script>
+</head>
+
+<body>
+
+    <!-- header sections starts  -->
+
+    <header class="header">
+
+
+        <a href="/dash" class="logo"> <i class="fas fa-book"></i> Book Mandu </a>
+
+        <form action="/searched" method="post" class="search-form">
+            {% csrf_token %}
+            <input type="search" name="searched" placeholder="search here..." id="search-box">
+            <button type="submit"></button>
+            <label class="fas fa-search"></label>
+
+        </form>
+
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <!-- <h1>cart-items{{cartItems}}</h1> -->
+            <a href="/cart"><i class="fas fa-shopping-cart"><span style="color:Red">({{cartItems}})</span></i></a>
+            <div id="login-btn" class="fas fa-user"></div>
+        </div>
+
+    </header>
+
+    <!-- header sections ends  -->
+
+    <!-- closer btn  -->
+
+    <div id="closer" class="fas fa-times"></div>
+
+    <!-- navbar  -->
+
+    <nav class="navbar">
+        <a href="/dash">Home</a>
+        <a href="/shop">Shop</a>
+        <a href="/aboutus">About Us</a>
+        <a href="/team">Our Team</a>
+        <a href="/blogs">Blog</a>
+        <a href="/contact">Contact</a>
+    </nav>
+        <!-- login form  -->
+
+        <div class="account">
+
+            <form action="">
+                <h3>Name: {{request.user.username}}</h3>
+                <h3>Email: {{request.user.email}} </h3>
+                <a href="/addDetails/{{user.id}}" class="btn"> Add info <i class="fas fa-info"></i> </a>
+                <a href="/profile" class="btn">Edit Your Profile</a>
+                <a href="/favourite_list" class="btn">favourite</a>
+                <a href="/order_display/{{user.id}}" class="btn">your order</a>
+                <a href="/logout" class="btn2">Log Out</a>
+
+
+            </form>
+
+        </div>
+        {% block content %}{% endblock content %}
+
+
+        <!-- footer section  -->
+
+        <section class="footer">
+
+            <div class="box-container">
+
+                <div class="box">
+                    <h3>Quick Links</h3>
+                    <a href="/dash"> <i class="fas fa-arrow-right"></i> Home</a>
+                    <a href="/shop"> <i class="fas fa-arrow-right"></i> Shop</a>
+                    <a href="/aboutus"> <i class="fas fa-arrow-right"></i> About</a>
+                    <a href="/team"> <i class="fas fa-arrow-right"></i> Team</a>
+                    <a href="/blogs"> <i class="fas fa-arrow-right"></i> Blog</a>
+                    <a href="/contact"> <i class="fas fa-arrow-right"></i> Contact</a>
+                </div>
+
+                <div class="box">
+                    <h3>Extra Links</h3>
+                    <a href="/order_display/{{user.id}}"> <i class="fas fa-arrow-right"></i> My order</a>
+                    <a href="#"> <i class="fas fa-arrow-right"></i> Login</a>
+                    <a href="/profile"> <i class="fas fa-arrow-right"></i> My account</a>
+                </div>
+
+                <div class="box">
+                    <h3>Extra Links</h3>
+                    <a href="#"> <i class="fa fa-map-marker"></i> Dillibazar</a>
+                    <a href="#"> <i class="fa fa-envelope"></i> bookmandu@gmail.com</a>
+                    <a href="#"> <i class="fa fa-phone"></i> 9880327811</a>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="credit">
+            Created by Book Mandu | All Rights Reserved!
+        </section>
+        <script type='text/javascript' src="{% static 'js/cart.js' %}"></script>
+        <script src="{% static 'js/home.js' %}"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</body>
+
+</html>

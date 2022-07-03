@@ -1,0 +1,91 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/cart/checkout.css' %}">
+
+</head>
+
+<body>
+    <section class="heading">
+        <h3>Checkout</h3>
+        <p> <a href="/dash">Home</a> /<a href="/cart"> Cart </a> / <span>Checkout</span> </p>
+    </section>
+
+
+    
+
+    <!-- checkout section starts-->
+    <section class="checkout" id="checkout">
+
+        <div class="row">
+
+            <form action="">
+                <div class="cart-items">
+                    <h3>Cart Items</h3>
+                    {% for item in items %}
+                    <p><span class="name">{{item.product.b_name}}-----{{item.quantity}} </span>
+                        <span class="price"> Nrs.{{item.product.b_price}}</span></p>
+                    {% endfor %}
+                    <p class="grand-total"><span class="name">Total item :</span> <span
+                        class="price">{{order.get_cart_items}}</span></p>
+                    <p class="grand-total"><span class="name">Grand Total :</span> <span
+                            class="price">Nrs.{{order.get_cart_total}}</span></p>
+                    <a href="/cart" class="btn">View Cart <i class="fas fa-eye"></i></a>
+                </div>
+            </form>
+            <div class="user-info">
+                <h3>Your Info</h3>
+                <p><i class="fas fa-user"></i> <span>{{request.user.first_name}} {{request.user.last_name}}</span></p>
+                <p><i class="fas fa-phone"></i> <span>+977 9880327811</span></p>
+                <p><i class="fas fa-envelope"></i> <span>{{request.user.email}}</span></p>
+                <a href="update_details.html" class="btn">Update Info <i class="fas fa-edit"></i></a>
+                <h3>delivery address</h3>
+                <!-- <p class="address"><i class="fas fa-map-marker-alt"></i> <span>Satungal, Kathmandu</span></p>
+                <a href="update_address.html" class="btn">Update Address <i class="fas fa-edit"></i></a> -->
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="text" value="{{order.customer_id}}" name="customer" hidden><br>
+                    <input type="text" value="{{order.id}}" name="order" hidden ><br>
+                    <input type="text" class="box" placeholder="Address" name="address"><br>
+                    <input type="text"  class="box" placeholder="phone"name="phone"><br>
+                    <input type="text"  name="total_price" value="{{order.get_cart_total}}" hidden ><br>
+                    <input type="text"  name="status" value="false" hidden><br>
+                    {% for item in items %}
+                    <input type="text"  name="purchased_books" value="{{item.product.b_name}}({{item.quantity}})," hiddden ><br>
+                    {% endfor %}
+                    <select  class="box" required>
+                        <option value="" disabled selected>Select Payment Method</option>
+                        <option value="cash on delivery">cash on delivery</option>
+                        <option value="credit card">credit card</option>
+                        <option value="esewa">esewa</option>
+
+                    </select>
+                    <input type="submit" value="Place Order"  class="btn3">
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- checkout section ends -->
+    <!-- custom js file link  -->
+    <script src="{% static 'js/home.js' %}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</body>
+
+</html>
+{% endblock %}

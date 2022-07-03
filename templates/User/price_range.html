@@ -1,0 +1,84 @@
+{% extends 'nav.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% block content %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>price range</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/home_css/home.css' %}">
+
+</head>
+
+<body>
+
+
+
+    <!-- home section ends -->
+
+    <!-- book section starts  -->
+
+
+
+    <section class="product" id="product">
+
+        <h1 class="title"> <span>0-500</span> <a href="shop.html">view all >></a> </h1>
+
+
+        <div class="box-container">
+            {% for addbook in new %}
+
+            <div class="box">
+
+                <img src="{% static 'assets/' %}{{addbook.b_pic}}">
+                <!-- bookmark -->
+                <div id="fav-section">
+
+                    <div>
+                        <a href="/favourite/{{addbook.book_id}}" class="btn btn-oouline-primary">Remove <i
+                                class="fas fa-heart fa-lg"></i>
+                            </i>
+                        </a>
+                    </div>
+
+                </div>
+
+                <h3>{{addbook.b_name}}</h3>
+                <span>Condition: Good</span>
+                <div class=" quantity">
+                    <span>quantity : </span>
+                    <input type="number" min="1" max="1000" value="1">
+
+
+                </div>
+                <a href="#" class="btn">add to cart</a>
+
+            </div>
+            {% endfor %}
+        </div>
+
+
+
+    </section>
+
+    <!-- product section ends -->
+
+
+
+
+
+    <!-- custom js file link  -->
+    <script src="{% static 'js/home.js' %}"></script>
+
+</body>
+
+</html>
+{% endblock %}

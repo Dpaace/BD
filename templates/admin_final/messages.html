@@ -1,0 +1,59 @@
+{% extends 'admin_final/adminNav.html' %}
+{% load static %}
+  {% block content %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bookmandu | Admin Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/admin_final/messages.css' %}" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+  
+    <section class="home-section">
+      <div class="text">Customer's Inquiries</div>
+      <div class="home-content">
+        <div class="sales-boxes">
+          <div class="recent-sales box">
+            <div class="title">Customers Inquiries</div>
+            <div class="sales-details">
+              <table>
+                <thead>
+                  <th>No.</th>
+                  <th>Customer's Name</th>
+                  <th>Phone Number</th>
+                  <th>Email</th>
+                  <th>Messages</th>
+                  
+                </thead>
+
+                <tbody>
+                  {% for contact in msg %}
+                  <tr>
+                    <td>{{contact.contact_id}}</td>
+                    <td>{{contact.c_name}}</td>
+                    <td>{{contact.c_phone}}</td>
+                    <td>{{contact.c_email}}</td>
+                    <td>{{contact.C_msg}}</td>
+                    {{contact.C_msg}}
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+{% endblock %}

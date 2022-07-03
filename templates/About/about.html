@@ -1,0 +1,81 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{% static 'css/about/about.css' %}">
+</head>
+
+<body>
+    <section class="heading">
+        <h3>About Us</h3>
+        <p> <a href="/dash">Home</a> / <span>About Us</span> </p>
+    </section>
+
+
+    <section class="about">
+
+        <div class="row">
+    
+            <div class="image">
+                <img src="{% static 'assets/about/about.png' %}" alt="">
+            </div>
+    
+            <div class="content">
+                <h3>About Bookmandu</h3>
+                <p>Are you searching for books to read in Nepal? But don’t have enough money to buy the
+                    new books to read. Trying to get a book at a very cheap price is a great hassle for everybody who
+                    is looking forward to reading new books. Now you don’t have to worry about this problem. This
+                    application is here to solve your problem on getting the books you need at a very cheap price
+                    ("Everything You Should Know About Thrift books", 2022).
+                    </p>
+                <p>Most of the used books are getting ruin on the shelf and many readers are out there not
+                    getting the chance to read books due to the price of new books. So, it provides quality books to
+                    our customers. It helps save the secondhand books in Nepal. For people looking to sell their books,
+                    this web application accepts those books and make them available in the store for people to buy.
+                    Its focus is to share the power of the books and connect books with people by making discovering
+                    and buying books easy, entertaining, informative, and socially engaging ("Buy Used Books
+                    Online", 2022).</p>
+            </div>
+            
+        </div>
+    
+        <div class="icons-container">
+    
+            <div class="icons">
+                <img src="{% static 'assets/about/book.png' %}" alt="">
+                <h3>All Books</h3>
+            </div>
+    
+            <div class="icons">
+                <img src="{% static 'assets/about/delivery-truck.png' %}" alt="">
+                <h3>Free Delivery</h3>
+            </div>
+    
+            <div class="icons">
+                <img src="{% static 'assets/about/return-box.png' %}" alt="">
+                <h3>Easy Returns</h3>
+            </div>
+    
+            <div class="icons">
+                <img src="{% static 'assets/about/money.png' %}" alt="">
+                <h3>Easy Payments</h3>
+            </div>
+    
+            <div class="icons">
+                <img src="{% static 'assets/about/customer-service.png' %}" alt="">
+                <h3>24/7 Support</h3>
+            </div>
+    
+        </div>
+    
+    </section>
+</body>
+
+</html>
+{% endblock %}

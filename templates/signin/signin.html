@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signin</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/sign_css/signin_style.css' %}">
+
+</head>
+
+<body>
+
+
+    <!-- home section starts -->
+    <section class="home" id="home">
+
+        <div id="particles-js"></div>
+
+        <main>
+            <div id="particles-js"></div>
+            <div class="box">
+                <div class="inner-box">
+                    <div class="forms-wrap">
+
+                        <form action="loginn" method="post" name="form" autocomplete="off" onsubmit="return validated()"
+                            class="sign-in-form">
+                            {% csrf_token %}
+
+                            <div class="heading">
+                                <h2>Welcome Back</h2>
+                                <h6>Not registred yet?</h6>
+                                <a href="#" class="toggle">Sign up</a>
+                            </div>
+                            
+
+                            <div class="actual-form">
+                                <div class="input-wrap">
+                                    <input type="text" minlength="4" class="input-field" autocomplete="off"
+                                        name="user_name" />
+
+                                    <label>Username</label>
+
+                                </div>
+                                <div id="name_message" style="color: brown; font-size: medium; display: none;">
+                                    **username required
+                                </div>
+
+
+                                <div class="input-wrap">
+                                    <input type="password" name="psw" minlength="4" class="input-field"
+                                        autocomplete="off" />
+                                    <label>Password</label>
+
+                                </div>
+                                <div id="password_message" style="color: brown; font-size: medium; display: none;">
+                                    **password required</div>
+
+
+
+                                {% for message in messages %}
+                                <h3 style="color:red">{{message}}</h3>
+                                {% endfor %}
+
+
+                                <input type="submit" value="Sign In" class="sign-btn" />
+
+                                <p class="text">
+                                    Forgotten your password or you login datails?
+                                    <a href="{% url 'password_reset' %}">Forgotten Password</a>
+                                </p>
+                            </div>
+                        </form>
+
+                        <form action="" method="post" autocomplete="off" class="sign-up-form">
+                            {% csrf_token %}
+                            <div class="heading">
+                                <h2></h2>
+                                <h6>Already have an account?</h6>
+                                <a href="#" class="toggle">Sign in</a>
+                            </div>
+
+                            <div class="actual-form">
+                                <div class="input-wrap">
+                                    <input type="text" name="first" minlength="4" class="input-field"
+                                        autocomplete="off" />
+                                    <label>First Name</label>
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="text" minlength="4" name="last" class="input-field"
+                                        autocomplete="off" />
+                                    <label>Last Name</label>
+                                </div>
+
+                                <div class="input-wrap">
+                                    <input type="email" class="input-field" name="email" autocomplete="off" required />
+                                    <label>Email</label>
+                                </div>
+
+                                <div class="input-wrap">
+                                    <input type="text" name="user_name" minlength="4" class="input-field" required
+                                        autocomplete="off" />
+                                    <label>Username</label>
+
+                                </div>
+
+                                <div class="input-wrap">
+                                    <input type="password" name="psw" minlength="4" class="input-field"
+                                        autocomplete="off">
+                                    <label>Password</label>
+
+                                </div>
+
+                                <div class="input-wrap">
+                                    <input type="password" name="con_psw" minlength="4" class="input-field"
+                                        autocomplete="off" />
+                                    <label>Confirm Password</label>
+                                    <div id="passwordnot_message"
+                                        style="color: brown; font-size: medium; display: none;">**username required
+                                    </div>
+                                </div>
+                                {% for message in messages %}
+                                <h3 style="color:red">{{message}}</h3>
+                                {% endfor %}
+
+                                <input type="submit" value="Sign Up" class="sign-btn" />
+
+                                <p class="text">
+                                    By signing up, I agree to the
+                                    <a href="#">Terms of Services</a> and
+                                    <a href="#">Privacy Policy</a>
+                                </p>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="carousel">
+                        <div class="images-wrapper">
+                            <img src="{% static 'assets/sign_img/img1.png' %}" class="image img-1 show" alt="" />
+                            <img src="{% static 'assets/sign_img/img2.png' %}" class="image img-2" alt="" />
+                            <img src="{% static 'assets/sign_img/img3.png' %}" class="image img-3" alt="" />
+                        </div>
+
+                        <div class="text-slider">
+                            <div class="text-wrap">
+                                <div class="text-group">
+                                    <h2>Join Us and Enjoy Buying Second Hand Book Online</h2>
+                                    <h2>Order Online</h2>
+                                    <h2>Det Delivered at your home</h2>
+                                </div>
+                            </div>
+
+                            <div class="bullets">
+                                <span class="active" data-value="1"></span>
+                                <span data-value="2"></span>
+                                <span data-value="3"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+    </section>
+    <!-- home section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- javascript part  -->
+
+    <!-- typed.js link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+
+    <!-- particles.js links  -->
+    <script src="{% static 'js/sign_js/particles.min.js' %}"></script>
+    <script src="{%  static 'js/sign_js/app.js' %}"></script>
+
+    <!-- vanilla-tilt.js link  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script>
+
+        let menu = document.querySelector('#menu-bars');
+        let header = document.querySelector('header');
+
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times');
+            header.classList.toggle('active');
+        }
+
+        window.onscroll = () => {
+            menu.classList.remove('fa-times');
+            header.classList.remove('active');
+        };
+
+
+
+        // validation purpose
+        function validated() {
+            var name1 = document.forms['form']['user_name'];
+            var pass = document.forms['form']['psw'];
+            var pass1 = document.forms['form']['psw1'];
+
+            var error1 = document.getElementById('name_message');
+            var error2 = document.getElementById('password_message');
+            var error3 = document.getElementById('passwordnot_message');
+            if (name1.value.length < 2) {
+
+                error1.style.display = "block";
+                name1.focus();
+                return false;
+            }
+            else {
+
+                error1.style.display = "none";
+
+            }
+
+
+            if (pass.value.length < 2) {
+
+                error2.style.display = "block";
+                pass.focus();
+                return false;
+            }
+            else {
+                error2.style.display = "none"
+            }
+
+            if (pass1.value != pass.value) {
+                error3.style.display = "block";
+                pass.focus();
+                return false;
+            }
+        }
+
+    </script>
+
+
+</body>
+
+</html>

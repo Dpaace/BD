@@ -1,0 +1,120 @@
+{% extends 'nav.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>home | BookMandu</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'css/home_css/home.css' %}">
+
+</head>
+
+<body>
+
+
+
+    <!-- home section starts  -->
+
+    <section class="home">
+
+        <div class="slides-container">
+
+            <div class="slide">
+                <div class="content">
+
+                    <h3>Book Mandu</h3>
+                    <p>Buy second hand books online, old books, used books online in Nepal</p>
+                    <a href="#" class="btn">Shop Now</a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'assets/home_img/pngwing.com (3).png' %}" alt="">
+                </div>
+            </div>
+            <div class="slide active">
+                <div class="content">
+                    <h3>Book Mandu</h3>
+                    <p>Nepal's first second-hand textbook marketplace
+                        Find costly textbooks for a great bargain price and help save the environment</p>
+                    <a href="#" class="btn">Shop Now</a>
+                </div>
+                <div class="image">
+                    <img src="{% static 'assets/home_img/book.png' %}">
+                </div>
+            </div>
+
+
+
+        </div>
+
+        <div id="slide-next" onclick="next()" class="fas fa-angle-right"></div>
+        <div id="slide-prev" onclick="prev()" class="fas fa-angle-left"></div>
+
+
+    </section>
+
+    <!-- home section ends -->
+
+    <!-- book section starts  -->
+
+
+
+    <section class="product" id="product">
+
+        <h1 class="title"> 
+            <a href="/fiction">
+                <span>Fiction </span> 
+            </a> 
+            <a href="/nonfiction">
+                <span>Non-Fiction</span>
+            </a> 
+            <a href="/philosophical"><span>Philosophical</span> </a>
+            <a href="/thriller"><span>Thriller</span> </a>
+            <a href="/romance"><span>Romance</span> </a>
+            <a href="/shop">view all >></a> 
+        </h1>
+
+        <div class="box-container">
+            {% for addbook in dash %}
+
+            <div class="box">
+
+                <a href="/bookdesc/{{addbook.New_slug}}"><img src="{% static 'assets/' %}{{addbook.b_pic}}"></a>
+                <h3>{{addbook.b_name}}</h3>
+                <span>Condition: Good</span>
+                <a data-product="{{addbook.book_id}}" data-action="add" class="btn update-cart">add to
+                    cart</a>
+                    
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </section>
+
+
+
+    <!-- custom js file link  -->
+    <script src="{% static 'js/home.js' %}"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
+{% endblock %}
